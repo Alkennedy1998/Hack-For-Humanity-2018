@@ -4,11 +4,11 @@
 
 <form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
   Insert picture and description of incident.<br/><br/>
-  <input type="file" onchange="previewFile() && getLocation()"><br/><br/>
+  <input type="file" onchange="previewFile()"><br/><br/>
   Description: <input type="text" name="descrip"><br/><br/>
 
   <img src="picsub" height="200" alt="Image preview..."> <br/><br/>
-  <input type="submit" onclick="myFunction()" value="Submit">
+  <input type="submit" onclick="getLocation(); myFunction()" value="Submit">
 </form>
 <script>
 function myFunction() {
@@ -37,6 +37,7 @@ function validateForm() {
     }
 }
 var y = document.getElementById("submitpage");
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(info, showError);
