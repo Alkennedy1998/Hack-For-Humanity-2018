@@ -17,7 +17,7 @@ app.use(myConnection(mysql, connection, 'pool')); */
 app.use(express.static('public'));
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname + '/main/frontend/submitpage.html'));
+  res.sendFile(path.join(__dirname + '/frontend/submitpage.html'));
 });
 app.listen(300, function () {
   console.log('App listening on port 300');
