@@ -15,22 +15,24 @@
 	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
 
 </style>
-   
+
 </head>
 
 <body>
 <!--  Page content goes here -->
+<script  src="req.js" type="text/javascript">
+</script>
 
 <div id="wrapper">
 
 	<div id="top">
-	
+
 		<div id="logo">
 			<p class="logo">
 			<a href="displaypage.html">
 			<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/>
 			</a>
-			</p> 
+			</p>
 		<h1> Disaster Mapper</h1>
 		</div>
 
@@ -50,21 +52,22 @@
 
 	</ul>
 	</div>
-	
+
 	</div>
 </div> <!-- end of wrapper div-->
 <div id="content-wrapper">
-		
+
 	<div id="content">
 	<center><h1> The Disaster Map </h1></center>
-	
+
 		<div id="mapleftside">
-		
+
 		<!--Map Code Starts -->
 		<div id="map"></div>
 		<script>
+      //import{Points} from './req';
         function initMap() {
-                
+
             var broadway = {
                 info: '<strong>Chipotle on Broadway</strong><br>\
                         5224 N Broadway St<br> Chicago, IL 60640<br>\
@@ -72,7 +75,7 @@
                 lat: 41.976816,
                 long: -87.659916
             };
-                
+
             var belmont = {
                 info: '<strong>Chipotle on Belmont</strong><br>\
                         1025 W Belmont Ave<br> Chicago, IL 60657<br>\
@@ -80,7 +83,7 @@
                 lat: 41.939670,
                 long: -87.655167
             };
-                
+
             var sheridan = {
                 info: '<strong>Chipotle on Sheridan</strong><br>\r\
                         6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
@@ -88,11 +91,11 @@
                 lat: 42.002707,
                 long: -87.661236
             };
-            
-            
+
+            /*
             const xhr = new XMLhttpRequest();
-            const url = /api/submission;
-            
+            const url = '/api/submission';
+
             xhr.responseType = 'json';
             xhr.onreadystatechange = function () {
                 if(xhr.readyState === XMLhttpRequest.DONE){
@@ -101,11 +104,11 @@
             }
             xhr.open('GET', url);
             xhr.send();
-            
+
             for (var i = 0, length = json.length; i < length; i++) {
                 var data = json[i],
                 latLng = new google.maps.LatLng(data.lat, data.lng);
-                
+
                 // Creating a marker and putting it on the map
                 var marker = new google.maps.Marker({
                     position: latLng,
@@ -113,31 +116,31 @@
                     title: data.title
                 });
             }
-            
-            
-            
+            */
+
+
             var locations = [
                     [broadway.info, broadway.lat, broadway.long, 0],
                     [belmont.info, belmont.lat, belmont.long, 1],
                     [sheridan.info, sheridan.lat, sheridan.long, 2],
             ];
-                                 
+
             var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 13,
                     center: new google.maps.LatLng(41.976816, -87.659916),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-                                                               
+
             var infowindow = new google.maps.InfoWindow({});
-                                                               
+
             var marker, i;
-                                                               
+
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map
             });
-                                                                                                   
+
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
@@ -147,25 +150,25 @@
             }
         }
 		</script>
-		
+
 		<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8WajLBE-53XI-UvSqL9WhRKQ9LrddNtQ
 		&callback=initMap">
 		</script>
 		</div>
-		
+
 		<!-- Map Code Ends -->
 		<div id="maprightside">
 			<br/>
 			<div id="info">
 			<p> This is a placeholder </p>
 			</div>
-			
+
 			<div id="submissionButton">
 				<center><a href="submitpage.html">Submit Your Own Image</a></center>
 			</div>
 		</div>
-	
+
     </div>
 </div> <!--  end of content-wrapper div -->
 </body>
