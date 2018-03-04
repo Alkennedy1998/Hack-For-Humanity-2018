@@ -134,6 +134,7 @@ body {
 #rightside form{
 	border-style: solid;
 	width: 250px;
+	margin-top: 30px;
 	/*background-color: #a6bef0; */
 }
 
@@ -143,4 +144,10 @@ body {
 
 #rightside img{
 	padding-top: 25px;
+}
+
+#hidden{
+	color: white;
+	border:0px solid #58B9FA; 
+
 }

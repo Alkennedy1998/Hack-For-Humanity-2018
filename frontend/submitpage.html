@@ -65,7 +65,65 @@
 		</div>
 		
 		<div id="rightside">
-		<p> This is where the form stuff is supposed to be </p>
+		<!-- script start -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+
+    window.addEventListener('load', function() {
+
+
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      console.log('Your current position is:');
+      var LATI=`${crd.latitude}`;
+      var LONG=`${crd.longitude}`;
+      window.globalLati=LATI;
+      window.globalLong=LONG;
+      console.log(`More or less ${crd.accuracy} meters.`);
+    };
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+     })
+
+     function writeText (form) {
+       form.latitude.value = window.globalLati;
+         form.longitude.value = window.globalLong;
+
+     };
+
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB5-r7nA96ydTyiER6U0XzvOdRjX_Ht7c&callback=initMap">
+    </script>
+	<!-- end script -->
+		<form id="loginformA" action="submission" method="post">
+		<p> Check "Accept" before Submitting.</p>
+		<p> Description: </p>
+		<input type="text" name="description"/>
+		<input id="hidden" type="hidden" name="latitude">
+		<input id="hidden" type="text" name="latitude">
+		<input id="hidden" type="hidden" name="longitude">
+		<input id="hidden" type="text" name="longitude">
+		<p> Submit Picture: </p>
+		<input type="file" name="userFile" />
+		<br /><br />
+		<INPUT TYPE="button" NAME="button2" Value="Accept" onClick="writeText(this.form)">
+		<br /><br />
+		<input type="submit" name="submit">
+		</form>
+		
 		</div>
 	
     </div>
