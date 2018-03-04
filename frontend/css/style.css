@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
-	font-family: Arial,Helvetica,sans-serif;
-	background-color: #80bcc4;
+	font-family: "Roboto", Arial,Helvetica,sans-serif;
+	background-color: #FFFFFF;
 }
 
 /* Start of the Header */
@@ -8,20 +10,27 @@ body {
 #wrapper {
 		width: 900px;
 		margin: auto;
-		background-color: #e188f2;
+		background-color: #90aeec;
 		padding: 0 40px;
 }
 
 #logo{
 	float:left;
-	margin: 50px 0;
+	font-family: Garamond;
 }
 
+#logo p{
+	float:left;
+	font-family: Garamond;
+}
+
+
 #logo h1{
-	color: #bc1142;
+	color: #ffffff;
 	float:right;
-	padding-left: 75px;
-	padding-top: 20px;
+	padding-left: 10px;
+	padding-top: 35px;
+	font-size: 30px;
 }
 
 #topnav{
@@ -83,7 +92,7 @@ body {
 #content{
 	float: left;
 	width: 1000px;
-	background-color: #66FFb3;
+	background-color: #a6bef0;
 }
 
 #content h1{
@@ -93,7 +102,7 @@ body {
 #leftside{
 	float: left;
 	width: 500px;
-	background-color: #FF66B3;
+	background-color: #a6bef0;
 
 
 }
@@ -110,7 +119,7 @@ body {
 #rightside{
 	float: right;
 	width: 500px;
-	background-color: #008e09;
+	background-color: #a6bef0;
 	
 }
 

@@ -2,7 +2,7 @@
 #mapleftside{
 	float: left;
 	width: 600px;
-	background-color: #ccc194;
+	background-color: #a6bef0;
 }
 
 #map{
@@ -18,17 +18,49 @@
 #maprightside{
 	float: right;
 	width: 400px;
-	background-color: #008e09;
+	background-color: #a6bef0;
 }
 
 #info{
 	width: 400px;
 	height: 500px;
-	background-color: #dcf5e9;
+	background-color: #808080;
 }
 
 #submissionButton{
 	padding-top: 40px;
 	font-size: 24px;
-	background-color: #ee6a50;
+	background-color: #a6bef0;
+}
+
+#submissionButton a:link{
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #000;
+	font-size: 25px;
+}
+
+#submissionButton a:visited{
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #000;
+	font-size: 25px;
+}
+
+#submissionButton a:active{
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #000;
+	font-size: 25px;
+}
+
+#submissionButton a:hover{
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	color:#bc1142;
+	font-size: 25px;
 }
