@@ -88,7 +88,34 @@
                 lat: 42.002707,
                 long: -87.661236
             };
+            
+            
+            const xhr = new XMLhttpRequest();
+            const url = /api/submission;
+            
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLhttpRequest.DONE){
+                    console.log(xhr.response);
+                }
+            }
+            xhr.open('GET', url);
+            xhr.send();
+            
+            for (var i = 0, length = json.length; i < length; i++) {
+                var data = json[i],
+                latLng = new google.maps.LatLng(data.lat, data.lng);
                 
+                // Creating a marker and putting it on the map
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: data.title
+                });
+            }
+            
+            
+            
             var locations = [
                     [broadway.info, broadway.lat, broadway.long, 0],
                     [belmont.info, belmont.lat, belmont.long, 1],
