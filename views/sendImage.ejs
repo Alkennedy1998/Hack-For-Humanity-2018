@@ -10,10 +10,10 @@
     var formData = new FormData(form);
 
     $.ajax({
-    url: 'http://localhost:8080/api/submission',
+    url: 'http://localhost:27017/api/submission',
     data: formData,
     type: 'POST',
-    contentType: false,
+    contentType: 'json',
     processData: false,
 
 });

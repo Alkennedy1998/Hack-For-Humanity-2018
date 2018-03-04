@@ -5,7 +5,10 @@
     <title>Geolocation</title>
 
     <script>
-
+    
+    const $description = $('#description');
+    const $submitButton = $('#submit');
+    
     window.addEventListener('load', function() {
 
 
@@ -33,7 +36,9 @@
 
      function writeText (form) {
        alert(crd.latitude);
-    form.latitude.value = crd.latitude;
+    form.latitude.value = crd.latitude;}
+    
+    
 }
 
     </script>
@@ -43,12 +48,11 @@
     </script>
 
       <form id="loginformA" action="submission" method="post">
-	<input type="text" name="description"/>
-  <input type="text" name="latitude">
-  <input type="hidden" name="longitude">
+	<input id="description" type="text" name="description"/>
+  <input id="latitude" type="text" name="latitude">
+  <input id="longitude" type="hidden" name="longitude">
 		<input type="file" name="userFile" />
-    <INPUT TYPE="button" NAME="button2" Value="Write" onClick="writeText(this.form)"
-		<input type="submit" name="submit">
+          <button id="submit">Submit</button>
 	</form>
 
 
