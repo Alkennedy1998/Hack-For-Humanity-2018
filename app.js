@@ -1,7 +1,8 @@
 var express = require("express")
 var ejs = require('ejs')
+var bodyParser = require('body-parser');
 var app = express()
-
+var bodyParser = require('body-parser');
 var path = require('path')
 var multer = require('multer')
 
@@ -18,6 +19,8 @@ var storage = multer.diskStorage({
 	}
 })
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs')
 
@@ -25,7 +28,10 @@ app.get('/api/file', function(req, res) {
 	res.render('sendImage')
 })
 
-app.post('/api/file', function(req, res) {
+app.post('/api/file', function(req, res){
+
+
+  console.log(req.body);
 	var upload = multer({
 		storage: storage
 	}).single('userFile')
