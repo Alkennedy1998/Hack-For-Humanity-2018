@@ -2,17 +2,17 @@
 <html>
 <body>
 
-<form id="submitpage" action="/submitsuccess"  method="post" enctype="multipart/form-data">
+<form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
   Insert picture and description of incident.<br>
   Description: <input type="text" name="descrip"><br>
   <input type="file" onchange="previewFile() && getLocation()"><br>
   <img src="picsub" height="200" alt="Image preview...">
-  <input type="submit" onclick="myFunction()" value="Submit">
+  <input type="submit" value="Submit">
 </form>
 <script>
-function myFunction() {
+<!--function myFunction() {
     document.getElementById("submitpage").submit();
-}
+}-->
 function previewFile() {
   var preview = document.querySelector('img');
   var file    = document.querySelector('input[type=file]').files[0];
