@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Insert picture and description of incident.</p>
+
+<form id="frm1" action="/action_page.php">
+  Description: <input type="text" name="descrip"><br>
+  Picture: <input type="text" name="lname"><br><br>
+  <input type="file" onchange="previewFile()"><br>
+  <img src="" height="200" alt="Image preview...">
+  <input type="button" onclick="myFunction()" value="Submit">
+</form>
+<script>
+function myFunction() {
+    document.getElementById("frm1").submit();
+}
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>
+
+</body>
+</html>
+
+
