@@ -5,10 +5,12 @@
 <p>Insert picture and description of incident.</p>
 
 <form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
-  Description: <input type="text" name="descrip"><br>
+<Description: <input type="text" name="descrip"><br>
+  <input type="text" name="description">
+
   <input type="file" onchange="previewFile()"><br>
   <img src="picsub" height="200" alt="Image preview...">
-  <input type="submit" onclick="myFunction()" value="Submit">
+  <input type="submit" value="Submit">
 </form>
 <script>
 function myFunction() {
@@ -39,5 +41,3 @@ function validateForm() {
 </script>
 </body>
 </html>
-
-
