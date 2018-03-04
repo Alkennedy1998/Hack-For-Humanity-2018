@@ -5,9 +5,9 @@
 <form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
   Insert picture and description of incident.<br>
   Description: <input type="text" name="descrip"><br>
-  <input type="file" onchange="previewFile()"><br>
+  <input type="file" onchange="previewFile() && getLocation()"><br>
   <img src="picsub" height="200" alt="Image preview...">
-  <input type="submit" onclick="myFunction();getLocation()" value="Submit">
+  <input type="submit" onclick="myFunction()" value="Submit">
 </form>
 <script>
 function myFunction() {
@@ -39,7 +39,6 @@ var y = document.getElementById("submitpage");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(info, showError);
-        y.innerHTML= "Location was saved.";
     } else { 
         y.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -47,7 +46,8 @@ function getLocation() {
 function info(position){
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    var time = position.timestamp 
+    var time = position.timestamp;
+    y.innerHTML= "Location was saved.";
 }
 function showError(error) {
     switch(error.code) {
