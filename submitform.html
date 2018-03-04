@@ -8,7 +8,7 @@
   Description: <input type="text" name="descrip"><br>
   <input type="file" onchange="previewFile()"><br>
   <img src="picsub" height="200" alt="Image preview...">
-  <input type="submit" onclick="myFunction()" onclick="getLocation()" value="Submit">
+  <input type="submit" onclick="myFunction();getLocation()" value="Submit">
 </form>
 <script>
 function myFunction() {
@@ -36,7 +36,7 @@ function validateForm() {
         return false;
     }
 }
-<!--var y = document.getElementById("submitpage");
+var y = document.getElementById("submitpage");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(info, showError);
@@ -65,7 +65,7 @@ function showError(error) {
             y.innerHTML = "An unknown error occurred."
             break;
     }
-}-->
+}
 </script>
 </body>
 </html>
