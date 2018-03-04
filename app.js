@@ -9,14 +9,12 @@ var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var multer = require('multer');
 var upload = multer({ dest: './uploads' });
-const app = express();
 const path = require('path');
 var Schema = mongoose.Schema;
 const fs = require('fs');
 var router = express.Router();
-const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 27017;
 
 
 app.use(express.static('public'));
