@@ -8,13 +8,14 @@ const app = express();
 const path = require('path');
 var Schema = mongoose.Schema;
 const fs = require('fs');
-//const bodyParser = require('body-parser');
+var router = express.Router();
+const bodyParser = require('body-parser');
 
-//const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 27017;
 
-/*app.use(express.static('public'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(bodyParser({uploadDir:'/data'}));*/
+app.use(bodyParser({uploadDir:'/data'}));
 
 var url = "mongodb://127.0.0.1/mydb";
 mongoose.connect(url);
@@ -22,59 +23,59 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var pic = new Schema({
-  img: {data: Buffer, contentType: String}
+
+
+var ReportsSchema = new Schema({
+  latitude: Number,
+  longitude: Number,
+  descr: String,
+  category: String,
+  //img: {data: Buffer, contentType: String}
 });
 
-var Item = mongoose.model('Image', pic);
+var Item = mongoose.model('Report', ReportsSchema);
 
-/*app.use(multer({ dest: './uploads/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}));*/ 
+router.use(function(req, res, next) {
+  console.log('Something is happening');
+  next();
+});
 
-/*MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("mydb");
+router.get('/',function(req,res){
+  res.json({ message: 'hooray! welcome to our api!' });
+});
 
-  var myobj = { name: "Company Inc", address: "Highway 37" };
-  dbo.collection("customers").insertOne(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    db.close();
+app.use('/api', router);
+
+//POSTs a report into reports
+router.post('/submission', function(req, res) {
+    var report = new Item();
+    console.log(req.body);
+    report.latitude = req.body.latitude;
+    report.longitude = req.body.longitude;
+    report.descr = req.body.description;
+    report.category = req.body.category;
+
+    report.save( function(err) {
+      if(err)
+        req.send(err);
+
+      res.json({message: 'Report created'});
+    });
+});
+
+//GETs the reports
+router.get('/submission', function(req, res) {
+  const conditions = req.query;
+  console.log(conditions);
+  Item.find(conditions, function(err, reports) {
+    if (err)
+        res.send(err);
+
+    res.json(reports);
   });
-});*/
-
-app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname + '/frontend/submitpage.html'));
 });
 
-app.post('/api/photo',function(req,res){
- var newPic = new pic();
- newPic.img.data = fs.readFileSync(req.files.userPhoto.path)
- newPic.img.contentType = 'image/png';
- newPic.save();
-});
 
-//Picture local upload
-app.post('/submitsuccess', function (req, res) {
-    var tempPath = req.files.file.path,
-        targetPath = path.resolve('./uploads/image.png');
-    if (path.extname(req.files.file.name).toLowerCase() === '.png') {
-        fs.rename(tempPath, targetPath, function(err) {
-            if (err) throw err;
-            console.log("Upload completed!");
-        });
-    } else {
-        fs.unlink(tempPath, function () {
-            if (err) throw err;
-            console.error("Only .png files are allowed!");
-        });
-    }
-
-});
-
-app.listen(27017, function () {
-  console.log('App listening on port: 27017');
+app.listen(PORT, function () {
+  console.log('App listening on port: ' + PORT);
 })
