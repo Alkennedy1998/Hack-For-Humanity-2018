@@ -85,7 +85,7 @@ body {
 #content-wrapper{
 	margin: auto;
 	width: 900px;
-    white-space: nowrap;
+    /*white-space: nowrap; */
     overflow: hidden;
 	padding-right: 80px;
 }
