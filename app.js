@@ -16,7 +16,7 @@ const fs = require('fs');
 app.use(bodyParser.json());
 app.use(bodyParser({uploadDir:'/data'}));*/
 
-var url = "mongodb://27017/mydb";
+var url = "mongodb://127.0.0.1/mydb";
 mongoose.connect(url);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
