@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/Alkennedy1998/Hack-For-Humanity-2018#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7",
+    "request": "^2.83.0"
   }
 }
