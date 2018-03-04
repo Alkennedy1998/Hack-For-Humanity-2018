@@ -102,7 +102,13 @@
             });
                                                                
             var infowindow = new google.maps.InfoWindow({});
-                                                               
+            if (json.status == "success") {
+                $("#add-point :input[name!=action]").val("");
+                var location = json.data;
+                addLocation(location);
+                zoomToBounds();
+            }
+            
             var marker, i;
                                                                
             for (i = 0; i < locations.length; i++) {
