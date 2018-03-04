@@ -4,16 +4,15 @@
 
 <p>Insert picture and description of incident.</p>
 
-<form id="frm1" action="/action_page.php">
+<form id="submitpage" action="/action_page.php" onsubmit="return validateForm()" method="post">
   Description: <input type="text" name="descrip"><br>
-  Picture: <input type="text" name="lname"><br><br>
   <input type="file" onchange="previewFile()"><br>
   <img src="" height="200" alt="Image preview...">
-  <input type="button" onclick="myFunction()" value="Submit">
+  <input type="submit" onclick="myFunction()" value="Submit">
 </form>
 <script>
 function myFunction() {
-    document.getElementById("frm1").submit();
+    document.getElementById("submitpage").submit();
 }
 function previewFile() {
   var preview = document.querySelector('img');
@@ -30,8 +29,14 @@ function previewFile() {
     preview.src = "";
   }
 }
+function validateForm() {
+    var x = document.forms["submitpage"]["descrip"].value;
+    if (x == "") {
+        alert("Description must be filled out");
+        return false;
+    }
+}
 </script>
-
 </body>
 </html>
 
