@@ -7,7 +7,7 @@
 <form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post">
   Description: <input type="text" name="descrip"><br>
   <input type="file" onchange="previewFile()"><br>
-  <img src="" height="200" alt="Image preview...">
+  <img src="picsub" height="200" alt="Image preview...">
   <input type="submit" onclick="myFunction()" value="Submit">
 </form>
 <script>
