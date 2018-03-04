@@ -59,38 +59,35 @@
 		<div id="map"></div>
 		<script>
 		function initMap() {
-            var DC = {
+            var dc = {
                 info: '<strong>Capitol of USA</strong><br>\
                         Washington, District of Columbia<br>\
-                        <a href="https://www.google.com/maps/dir//Washington,+DC/@38.8935965,-77.014576,11z/data=!4m17!1m7!3m6!1s0x89b7c6de5af6e45b:0xc2524522d4885d2a!2sWashington,+DC!3b1!8m2!3d38.9071923!4d-77.0368707!4m8!1m0!1m5!1m1!1s0x89b7c6de5af6e45b:0xc2524522d4885d2a!2m2!1d-77.0368707!2d38.9071923!3e1">Get Directions</a>'
                 lat: 38.9072,
                 long: 77.0369
             };
             
-            var London = {
+            var london = {
                 info: '<strong>Capitol of England</strong><br>\
                         London, England<br>\
-                        <a href="https://www.google.com/maps/dir//London,+UK/@51.5073509,-0.1277583,12z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x47d8a00baf21de75:0x52963a5addd52a99!2m2!1d-0.1277583!2d51.5073509!3e1">Get Directions</a>'
                 lat: 51.5074,
                 long: 0.1278
             };
             
-            var Paris = {
+            var paris = {
                 info: '<strong>Capitol of France</strong><br>\
                         Paris, France<br>\
-                        <a href="https://www.google.com/maps/dir//Paris,+France/@48.856614,2.3522219,12z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!2m2!1d2.3522219!2d48.856614!3e1">Get Directios</a>'
                 lat: 48.8566,
                 long: 2.3522
             };
             
             var locations = [
-                [DC.info, DC.lat, DC.long, 0],
-                [London.info, London.lat, London.long, 1],
-                [Paris.info, Paris.lat, Paris.long, 2],
+                [dc.info, dc.lat, dc.long, 0],
+                [london.info, london.lat, london.long, 1],
+                [paris.info, paris.lat, paris.long, 2],
             ];
             
 			var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 13,
+			zoom: 5,
             center: new google.maps.LatLng(51.5074, 0.1278),
             mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
@@ -112,6 +109,7 @@
                 }
             })(marker, i));
 		}
+        }
 		</script>
 		
 		<script async defer
