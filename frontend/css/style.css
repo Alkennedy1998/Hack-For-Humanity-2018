@@ -120,7 +120,16 @@ body {
 	float: right;
 	width: 500px;
 	background-color: #a6bef0;
-	
+}
+
+#rightside form{
+	border-style: solid;
+	width: 250px;
+	background-color: #f0d8a6;
+}
+
+#rightside form{
+	padding: 50px;
 }
 
 #rightside img{
