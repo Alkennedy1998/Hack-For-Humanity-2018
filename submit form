@@ -8,7 +8,7 @@
   Description: <input type="text" name="descrip"><br>
   <input type="file" onchange="previewFile()"><br>
   <img src="picsub" height="200" alt="Image preview...">
-  <input type="submit" onclick="myFunction()" value="Submit">
+  <input type="submit" onclick="myFunction()" onclick="getLocation()" value="Submit">
 </form>
 <script>
 function myFunction() {
@@ -35,6 +35,38 @@ function validateForm() {
         alert("Description must be filled out");
         return false;
     }
+}
+function getLocation() {
+  var y = document.getElementById("submitpage");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(printcheck);
+        var latlon = position.coords.latitude + "," + position.coords.longitude;
+        var time = position.timestamp
+        y.innerHTML= "Location was saved.";
+    } else { 
+        y.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+function printcheck(position){
+  var z = document.getElementById("submitpage");
+  z.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude + "<br>Time: " +position.timestamp;
 }
 </script>
 </body>
