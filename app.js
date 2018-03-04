@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 //const myConnection = require('express-myconnection');
 const path = require('path');
+const bodyParser = require('body-parser');
+//const store = require('./store');
+
+
 const port = process.env.PORT || 8080;
 /*const connection = mysql.createConnection({
   host: 'localhost',
@@ -15,12 +19,18 @@ const port = process.env.PORT || 8080;
 app.use(myConnection(mysql, connection, 'pool')); */
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname + '/frontend/submitpage.html'));
 });
 
-app.post('/report/:id');
+/*app.post('/createReport', function(req, res) {
+  store.createReport({
+    //Do stuff
+  }).then(() => res.sendStatus(200));
+
+});*/
 
 app.listen(port, function () {
   console.log('App listening on port: ' + port);
