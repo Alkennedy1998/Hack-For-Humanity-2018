@@ -21,17 +21,35 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var pic = new picSchema({
-  img: {data: Buffer, contentType: String}
-});
-var Item = mongoose.model('Clothes', Item);
+db.once('open', function callback() {
+	//independet schema
+	var DataSchema = new Schema( {
+		latitude: Number,
+		longitude: Number,
+		description: String
+	} );
+	// This schema represents a collection whose documents will each hold a reference
+	// to a single document from DataSchema
+	
+	var Data = mongoose.model( 'Data', DataSchema);
+	
+} );
 
-app.use(multer({
+exports.reset = function( req, res) {
+	var Data = mongoose.model( 'Data' );
+	Data.find().remove();
+	
+	for (var i = 0; i < 
+/*var pic = new picSchema({
+  img: {data: Buffer, contentType: String}
+});*/
+
+/*app.use(multer({
   dest: './data/',
   rename: function (fieldname, filename) {
     return filename;
   }
-}));
+}));*/
 
 /*MongoClient.connect(url, function(err, db) {
   if (err) throw err;
