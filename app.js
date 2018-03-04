@@ -63,15 +63,18 @@ router.post('/submission', function(req, res) {
     });
 });
 
-//GETs all the reports
+//GETs the reports
 router.get('/submission', function(req, res) {
-  Item.find(function(err, reports) {
+  const conditions = req.query;
+  console.log(conditions);
+  Item.find(conditions, function(err, reports) {
     if (err)
         res.send(err);
 
     res.json(reports);
   });
 });
+
 
 app.listen(PORT, function () {
   console.log('App listening on port: ' + PORT);
