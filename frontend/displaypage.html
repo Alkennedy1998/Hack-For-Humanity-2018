@@ -2,20 +2,20 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
-<title>Disaster Mapper Submit</title>
-<meta http-equiv="Content-Language" content="en-us" />
-<meta name="author" content="Your Name Goes Here" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <title>Disaster Mapper Submit</title>
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta name="author" content="Your Name Goes Here" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <style type="text/css" media="all"> -->
 
-<!-- <style type="text/css" media="all"> -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+  <link href="css/displaypage.css" rel="stylesheet" type="text/css" media="screen" />
+      <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' /> <!-- Font link -->
+  	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon"/>
 
-<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="css/displaypage.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' /> <!-- Font link -->
-	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
-
-</style>
-
+  </style>
+  <script  src="req.js" type="text/javascript">
 </head>
 
 <body>
@@ -93,17 +93,7 @@
             };
 
             /*
-            const xhr = new XMLhttpRequest();
-            const url = '/api/submission';
 
-            xhr.responseType = 'json';
-            xhr.onreadystatechange = function () {
-                if(xhr.readyState === XMLhttpRequest.DONE){
-                    console.log(xhr.response);
-                }
-            }
-            xhr.open('GET', url);
-            xhr.send();
 
             for (var i = 0, length = json.length; i < length; i++) {
                 var data = json[i],
