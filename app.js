@@ -3,6 +3,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var multer = require('multer');
+var upload = multer({ dest: './uploads' });
 const app = express();
 const path = require('path');
 var Schema = mongoose.Schema;
@@ -21,17 +22,17 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var pic = new picSchema({
+var pic = new Schema({
   img: {data: Buffer, contentType: String}
 });
-var Item = mongoose.model('Clothes', Item);
 
-app.use(multer({
-  dest: './data/',
-  rename: function (fieldname, filename) {
-    return filename;
-  }
-}));
+var Item = mongoose.model('Image', pic);
+
+/*app.use(multer({ dest: './uploads/',
+ rename: function (fieldname, filename) {
+   return filename;
+ },
+}));*/ 
 
 /*MongoClient.connect(url, function(err, db) {
   if (err) throw err;
