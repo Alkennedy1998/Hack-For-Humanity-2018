@@ -102,12 +102,6 @@
             });
                                                                
             var infowindow = new google.maps.InfoWindow({});
-            if (json.status == "success") {
-                $("#add-point :input[name!=action]").val("");
-                var location = json.data;
-                addLocation(location);
-                zoomToBounds();
-            }
             
             var marker, i;
                                                                
@@ -123,6 +117,37 @@
                     infowindow.open(map, marker);
                 }
             })(marker, i));
+            }
+            const abc = new markers
+            const url = backendurl
+            abc.responseType = 'json';
+            abc.onreadystatechange = function () {
+            if (abc.readyState === abc.DONE) {
+            //code to execute
+            }
+            };
+            
+            var script = document.createElement('script');
+            script.src = 'url from back end';
+            document.getElementsByTagName('head')[0].appendChild(script);
+            
+            map.data.loadGeoJson('data.json');
+            
+            if (json.status == "success") {
+            $("#add-point :input[name!=action]").val("");
+            var location = json.data;
+            addLocation(location);
+            zoomToBounds();
+            }
+        }
+        window.eqfeed_callback = function(results) {
+            for (var i = 0; i < results.features.length; i++) {
+                var coords = results.features[i].geometry.coordinates;
+                var latLng = new google.maps.LatLng(coords[1],coords[0]);
+                var marker = new google.maps.Marker({
+                    poisiton: latLng,
+                    map: map
+                    });
             }
         }
 		</script>
