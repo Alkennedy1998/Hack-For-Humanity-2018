@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 //const myConnection = require('express-myconnection');
 const path = require('path');
-
+const port = process.env.PORT || 8080;
 /*const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -19,6 +19,9 @@ app.use(express.static('public'));
 app.get('/',function(req,res){
   res.sendFile(path.join(__dirname + '/frontend/submitpage.html'));
 });
-app.listen(300, function () {
-  console.log('App listening on port 300');
+
+app.post('/report/:id');
+
+app.listen(port, function () {
+  console.log('App listening on port: ' + port);
 })
