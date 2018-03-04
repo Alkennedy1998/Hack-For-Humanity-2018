@@ -95,25 +95,6 @@
                     [sheridan.info, sheridan.lat, sheridan.long, 2],
             ];
 
-
-
-
-            var myLatlng = new google.maps.LatLng(Lat,Lon);//Lat and Lon are from Ari's user prompt
-            
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                title:"Description of Image!"//based on what user enters for description
-            });
-
-            // To add the marker to the map, call setMap();
-            marker.setMap(map);
-            
-            
-            
-            
-            
                  
             var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 13,
