@@ -1,43 +1,32 @@
-var express = require("express")
-var ejs = require('ejs')
-var bodyParser = require('body-parser');
-var app = express()
-var bodyParser = require('body-parser');
-var path = require('path')
-var multer = require('multer')
+const express = require("express")
+//var ejs = require('ejs')
+const bodyParser = require('body-parser');
+const app = express()
+const request = require('request');
+
+//var path = require('path')
+
 
 const port = process.env.PORT || 8080;
 
+//app.set('views', __dirname + '/views');
 
-var storage = multer.diskStorage({
-	destination: function(req, file, callback) {
-		callback(null, './uploadedPictures')
-	},
-	filename: function(req, file, callback) {
-		console.log(file)
-		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-	}
-})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.set('view engine', 'ejs')
 
+
 app.get('/api/file', function(req, res) {
-	res.render('sendImage')
+	res.render('./FinalTest')
 })
 
-app.post('/api/file', function(req, res){
+app.post('/api/submission', function(req, res){
 
+  var obj = {};
+  	console.log('body: ' + JSON.stringify(req.body));
+  	res.send(req.body);
 
-  console.log(req.body);
-	var upload = multer({
-		storage: storage
-	}).single('userFile')
-	upload(req, res, function(err) {
-		res.end('File is uploaded')
-	})
 })
 
 
