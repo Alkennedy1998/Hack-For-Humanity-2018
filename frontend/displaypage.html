@@ -66,11 +66,10 @@
         function initMap() {
                 
             var broadway = {
-                info: '<strong>Chipotle on Broadway</strong><br>\
-                        5224 N Broadway St<br> Chicago, IL 60640<br>\
-                        <a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
-                lat: 41.976816,
-                long: -87.659916
+                info: '<strong>Earthquake</strong><br>\
+                        <a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+                lat: 37.351200399999996,
+                long: -121.9311227
             };
                 
             var belmont = {
@@ -97,7 +96,7 @@
                                  
             var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 13,
-                    center: new google.maps.LatLng(41.976816, -87.659916),
+                    center: new google.maps.LatLng(37.351200399999996, -121.9311227),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
             });
                                                                
@@ -128,12 +127,6 @@
 		</div>
 		
 		<!-- Map Code Ends -->
-		<div id="maprightside">
-			<br/>
-			<div id="info">
-			<p> This is a placeholder </p>
-			</div>
-			
 			<div id="submissionButton">
 				<center><a href="submitpage.html">Submit Your Own Image</a></center>
 			</div>
