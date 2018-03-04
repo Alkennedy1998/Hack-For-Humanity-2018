@@ -13,7 +13,7 @@
 	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
 
 </style>
-   
+
 </head>
 
 <body>
@@ -22,13 +22,13 @@
 <div id="wrapper">
 
 	<div id="top">
-	
+
 		<div id="logo">
 			<p class="logo">
 			<a href="displaypage.html">
 			<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/>
 			</a>
-			</p> 
+			</p>
 		<h1> Disaster Mapper</h1>
 		</div>
 
@@ -48,26 +48,58 @@
 
 	</ul>
 	</div>
-	
+
 	</div>
 </div> <!-- end of wrapper div-->
-	
+
 <div id="content-wrapper">
-		
+
 	<div id="content">
 	<center><h1> Submit a Picture and a Description </h1></center>
-	
+
 		<div id="leftside">
 		<img src="images/flood.jpg" width="300" height="200px" alt="To do pic" />
-		
+
 		<img src="images/wildfire.jpeg" width="300" height="200px" alt="To do pic" />
 		<p> Two examples of suitable pictures </p>
 		</div>
-		
+
 		<div id="rightside">
-		<p> This is where the form stuff is supposed to be </p>
+			<p>Insert picture and description of incident.</p>
+
+			<form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+			  Description: <input type="text" name="descrip"><br>
+			  <input type="file" onchange="previewFile()"><br>
+			  <img src="picsub" height="200" alt="Image preview...">
+			  <input type="submit" onclick="myFunction()" value="Submit">
+			</form>
+			<script>
+			function myFunction() {
+			    document.getElementById("submitpage").submit();
+			}
+			function previewFile() {
+			  var preview = document.querySelector('img');
+			  var file    = document.querySelector('input[type=file]').files[0];
+			  var reader  = new FileReader();
+			  reader.onloadend = function () {
+			    preview.src = reader.result;
+			  }
+			  if (file) {
+			    reader.readAsDataURL(file);
+			  } else {
+			    preview.src = "";
+			  }
+			}
+			function validateForm() {
+			    var x = document.forms["submitpage"]["descrip"].value;
+			    if (x == "") {
+			        alert("Description must be filled out");
+			        return false;
+			    }
+			}
+			</script>
 		</div>
-	
+
     </div>
 </div> <!--  end of content-wrapper div -->
 </body>
