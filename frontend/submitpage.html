@@ -54,7 +54,7 @@
 <div id="content-wrapper">
 		
 	<div id="content">
-	<center><h1> Submit a Picture to the Map Database </h1></center>
+	<center><h1> Submit a Picture and Description to the Map Database </h1></center>
 	
 		<div id="leftside">
 		<img src="images/flood.jpg" width="300" height="200px" alt="To do pic" />
@@ -66,15 +66,10 @@
 		<div id="rightside">
 		<br/><br/><br/><br/><br/>
 		<!-- start form code -->
-		<form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
-		
-		<input type="file" onchange="previewFile()"><br/><br/>
-		
-		Description: <input type="text" name="descrip"><br/><br/>
-		
-		<img src="picsub" height="200" alt="Image preview..."><br/><br/>
-		
-		<input type="submit" onclick="myFunction()" value="Submit">
+		<form id="uploadForm" enctype="multipart/form-data" method="post">
+		<input type="file"  onchange="previewFile()" name="userFile"  /> <br/><br/><br/>
+		<img src="picsub" height="200" alt="Image preview...">
+		<input type="submit" value="Submit" name="submit">
 		</form>
 <!-- start script -->
 <script>
