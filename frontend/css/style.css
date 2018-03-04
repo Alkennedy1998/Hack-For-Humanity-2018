@@ -2,15 +2,21 @@
 
 body {
 	font-family: "Roboto", Arial,Helvetica,sans-serif;
-	background-color: #FFFFFF;
+	/*background-image: url(../images/bg.jpg); */
+	background-color: #000010;
+	
 }
 
 /* Start of the Header */
 
 #wrapper {
 		width: 900px;
+		height: 225px;
 		margin: auto;
-		background-color: #90aeec;
+		/*background-color: #90aeec; */
+		background-image: url(../images/earth1.png);
+		background-repeat:no-repeat;
+		background-size:1000px 306px; /* width height */
 		padding: 0 40px;
 }
 
@@ -26,7 +32,7 @@ body {
 
 
 #logo h1{
-	color: #000000;
+	color: #ffffff;
 	float:right;
 	padding-left: 10px;
 	padding-top: 35px;
@@ -35,12 +41,16 @@ body {
 
 #topnav{
 	clear:both;	
+	margin-left: 15px;
 }
 
+#nav a{
+	color: #ffffff;
+}
 #topnav ul{
 	padding: 15px 0;
 	margin: 0;
-	border-top: 1px #000 dotted;
+
 }
 
 #topnav ul li{
@@ -53,32 +63,32 @@ body {
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+	font-size: 18px;
+	font-family: Garamond;
 }
 
 #topnav a:visited{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+
+	font-size: 18px;
 }
 
 #topnav a:active{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+
+	font-size: 18px;
 }
 
 #topnav a:hover{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color:#bc1142;
-	font-size: 14px;
+	color:#edd79b;
+	font-size: 18px;
 }
 
 /* Start of the Body Content */
@@ -92,7 +102,8 @@ body {
 #content{
 	float: left;
 	width: 1000px;
-	background-color: #a6bef0;
+	/*background-color: #a6bef0; */
+	background-color: #ffffff; 
 }
 
 #content h1{
@@ -102,9 +113,7 @@ body {
 #leftside{
 	float: left;
 	width: 500px;
-	background-color: #a6bef0;
-
-
+	/*background-color: #a6bef0;*/
 }
 
 #leftside img{
@@ -119,8 +128,17 @@ body {
 #rightside{
 	float: right;
 	width: 500px;
-	background-color: #a6bef0;
-	
+	/*background-color: #a6bef0; */
+}
+
+#rightside form{
+	border-style: solid;
+	width: 250px;
+	/*background-color: #a6bef0; */
+}
+
+#rightside form{
+	padding: 50px;
 }
 
 #rightside img{

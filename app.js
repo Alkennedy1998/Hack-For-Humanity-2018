@@ -1,17 +1,25 @@
+
 const express = require("express")
-//var ejs = require('ejs')
+
 const bodyParser = require('body-parser');
 const app = express()
 const request = require('request');
-
-//var path = require('path')
-
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+var MongoClient = require('mongodb').MongoClient;
+var multer = require('multer');
+var upload = multer({ dest: './uploads' });
+const app = express();
+const path = require('path');
+var Schema = mongoose.Schema;
+const fs = require('fs');
+var router = express.Router();
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 8080;
 
-//app.set('views', __dirname + '/views');
 
-
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs')
@@ -21,15 +29,67 @@ app.get('/api/file', function(req, res) {
 	res.render('./FinalTest')
 })
 
-app.post('/api/submission', function(req, res){
 
-  var obj = {};
-  	console.log('body: ' + JSON.stringify(req.body));
-  	res.send(req.body);
+app.use(bodyParser({uploadDir:'/data'}));
 
-})
+var url = "mongodb://127.0.0.1/mydb";
+mongoose.connect(url);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
 
 
-app.listen(port, function () {
-  console.log('App listening on port: ' + port);
+
+var ReportsSchema = new Schema({
+  latitude: Number,
+  longitude: Number,
+  descr: String,
+  category: String,
+  //img: {data: Buffer, contentType: String}
+});
+
+var Item = mongoose.model('Report', ReportsSchema);
+
+router.use(function(req, res, next) {
+  console.log('Something is happening');
+  next();
+});
+
+router.get('/',function(req,res){
+  res.json({ message: 'hooray! welcome to our api!' });
+});
+
+app.use('/api', router);
+
+//POSTs a report into reports
+router.post('/submission', function(req, res) {
+    var report = new Item();
+    console.log(req.body);
+    report.latitude = req.body.latitude;
+    report.longitude = req.body.longitude;
+    report.descr = req.body.description;
+    report.category = req.body.category;
+
+    report.save( function(err) {
+      if(err)
+        req.send(err);
+
+      res.json({message: 'Report created'});
+    });
+});
+
+//GETs the reports
+router.get('/submission', function(req, res) {
+  const conditions = req.query;
+  console.log(conditions);
+  Item.find(conditions, function(err, reports) {
+    if (err)
+        res.send(err);
+
+    res.json(reports);
+  });
+});
+
+app.listen(PORT, function () {
+  console.log('App listening on port: ' + PORT);
 })
