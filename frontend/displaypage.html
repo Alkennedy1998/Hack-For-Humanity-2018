@@ -11,8 +11,8 @@
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="css/displaypage.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' /> <!-- Font link -->
-	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel='stylesheet' type='text/css' /> <!-- Font link -->
+	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon"/>
 
 </style>
    
@@ -101,7 +101,8 @@
             }
             xhr.open('GET', url);
             xhr.send();
-            
+           
+        
             for (var i = 0, length = json.length; i < length; i++) {
                 var data = json[i],
                 latLng = new google.maps.LatLng(data.lat, data.lng);
