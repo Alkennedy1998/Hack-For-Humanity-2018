@@ -20,7 +20,13 @@
 
       console.log('Your current position is:');
       alert(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
+      alert(`Longitude: ${crd.longitude}`);
+      var LATI=`${crd.latitude}`;
+      var LONG=`${crd.longitude}`;
+      alert(LATI);
+      alert(LONG);
+      window.globalLati=LATI;
+      window.globalLong=LONG;
       console.log(`More or less ${crd.accuracy} meters.`);
     };
 
@@ -32,9 +38,10 @@
      })
 
      function writeText (form) {
-       alert(crd.latitude);
-    form.latitude.value = crd.latitude;
-}
+       form.latitude.value = window.globalLati;
+         form.longitude.value = window.globalLong;
+
+     };
 
     </script>
 
@@ -45,9 +52,9 @@
       <form id="loginformA" action="submission" method="post">
 	<input type="text" name="description"/>
   <input type="text" name="latitude">
-  <input type="hidden" name="longitude">
+  <input type="text" name="longitude">
 		<input type="file" name="userFile" />
-    <INPUT TYPE="button" NAME="button2" Value="Write" onClick="writeText(this.form)"
+    <INPUT TYPE="button" NAME="button2" Value="Write" onClick="writeText(this.form)">
 		<input type="submit" name="submit">
 	</form>
 
