@@ -8,16 +8,23 @@ const bodyParser = require('body-parser');
 //const store = require('./store');
 
 
-const port = process.env.PORT || 8080;
-/*const connection = mysql.createConnection({
+const PORT = process.env.PORT || 8080;
+
+const con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  port: 3000,
-  database: 'reports'
+  port: PORT
 });
 
-app.use(myConnection(mysql, connection, 'pool')); */
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  con.query("CREATE DATABASE reports", function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+  });
+});
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -45,6 +52,6 @@ app.post('/submitsuccess', function (req, res) {
     // ...
 });
 
-app.listen(port, function () {
-  console.log('App listening on port: ' + port);
+app.listen(PORT, function () {
+  console.log('App listening on port: ' + PORT);
 })
