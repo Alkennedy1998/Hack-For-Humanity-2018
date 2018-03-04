@@ -63,6 +63,18 @@
 		<!--Map Code Starts -->
 		<div id="map"></div>
 		<script>
+        const xhr = new XMLhttpRequest();
+        const url = /api/submission;
+            
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLhttpRequest.DONE){
+                console.log(xhr.response);
+            }
+        }
+        xhr.open('GET', url);
+        xhr.send();
+        
         function initMap() {
                 
             var broadway = {
@@ -89,19 +101,6 @@
                 long: -87.661236
             };
             
-            
-            const xhr = new XMLhttpRequest();
-            const url = /api/submission;
-            
-            xhr.responseType = 'json';
-            xhr.onreadystatechange = function () {
-                if(xhr.readyState === XMLhttpRequest.DONE){
-                    console.log(xhr.response);
-                }
-            }
-            xhr.open('GET', url);
-            xhr.send();
-           
         
             for (var i = 0, length = json.length; i < length; i++) {
                 var data = json[i],
