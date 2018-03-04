@@ -1,10 +1,24 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+//const mysql = require('mysql');
+const app = express();
+//const myConnection = require('express-myconnection');
+const path = require('path');
 
-app.get('/', function(req, res) {
-  res.send('Hello World');
+/*const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  port: 3000,
+  database: 'reports'
 });
 
-app.listen(3000, function () {
-  console.log('App listening on port 3000');
+app.use(myConnection(mysql, connection, 'pool')); */
+
+app.use(express.static('public'));
+
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname + '/main/frontend/submitpage.html'));
+});
+app.listen(300, function () {
+  console.log('App listening on port 300');
 })
