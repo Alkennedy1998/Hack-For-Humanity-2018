@@ -2,8 +2,10 @@ exports.index = function (req, req) {
   if(req.method == 'POST') {
     var post = req.body;
     //other stuff to save
-
-    if(!req.files) return res.status(400).send('400 Error');
+    console.log('POST');
+    if(!req.files)
+      return res.status(400).send('400 Error');
+      
     var file = req.files.uploaded_image;
     var img_name = file.name;
 

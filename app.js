@@ -1,24 +1,32 @@
 const express = require('express');
-const mysql = require('mysql');
+var mysql = require('mysql');
 const app = express();
 const routes = require('./routes');
 const path = require('path');
 const fs = require('fs');
-const fileUpload = require('express-fileUpload');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 //const store = require('./store');
 
 const PORT = process.env.PORT || 8080;
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  port: PORT,
-  database: 'reports'
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "myusername",
+  password: "mypassword"
 });
 
-connection.connect();
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  /*Create a database named "mydb":*/
+  con.query("CREATE DATABASE mydb", function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+  });
+});
+
+/*
 
 global.db = connection;
 
@@ -40,10 +48,10 @@ app.get('/',function(req,res){
 });
 
 app.get('/', routes.index);
-app.post('/', routes.index);
+app.post('/submitsuccess', routes.index);
 
 //Picture local upload
-/*app.post('/submitsuccess', function (req, res) {
+app.post('/submitsuccess', function (req, res) {
     var tempPath = req.file.file.path;
     var targetPath = path.resolve('./uploads/image.png');
     if (path.extname(req.files.file.name).toLowerCase() === '.png') {
@@ -58,8 +66,8 @@ app.post('/', routes.index);
         });
     }
     // ...
-}); */
+});
 
 app.listen(PORT, function () {
   console.log('App listening on port: ' + PORT);
-})
+}) */
