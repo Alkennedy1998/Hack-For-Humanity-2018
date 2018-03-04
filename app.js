@@ -1,4 +1,9 @@
-const express = require('express');
+
+const express = require("express")
+
+const bodyParser = require('body-parser');
+const app = express()
+const request = require('request');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
@@ -11,10 +16,20 @@ const fs = require('fs');
 var router = express.Router();
 const bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 27017;
+const port = process.env.PORT || 8080;
+
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs')
+
+
+app.get('/api/file', function(req, res) {
+	res.render('./FinalTest')
+})
+
+
 app.use(bodyParser({uploadDir:'/data'}));
 
 var url = "mongodb://127.0.0.1/mydb";

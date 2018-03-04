@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <head>
+    <title>Geolocation</title>
+
+    <script>
+
+    window.addEventListener('load', function() {
+
+
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      console.log('Your current position is:');
+      alert(`Latitude : ${crd.latitude}`);
+      alert(`Longitude: ${crd.longitude}`);
+      var LATI=`${crd.latitude}`;
+      var LONG=`${crd.longitude}`;
+      alert(LATI);
+      alert(LONG);
+      window.globalLati=LATI;
+      window.globalLong=LONG;
+      console.log(`More or less ${crd.accuracy} meters.`);
+    };
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+     })
+
+     function writeText (form) {
+       form.latitude.value = window.globalLati;
+         form.longitude.value = window.globalLong;
+
+     };
+
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB5-r7nA96ydTyiER6U0XzvOdRjX_Ht7c&callback=initMap">
+    </script>
+
+      <form id="loginformA" action="submission" method="post">
+	<input type="text" name="description"/>
+  <input type="text" name="latitude">
+  <input type="text" name="longitude">
+		<input type="file" name="userFile" />
+    <INPUT TYPE="button" NAME="button2" Value="Write" onClick="writeText(this.form)">
+		<input type="submit" name="submit">
+	</form>
+
+
+  </body>
+  </html>
