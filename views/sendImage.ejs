@@ -1,16 +1,19 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body>
 
 <p>Insert picture and description of incident.</p>
 
-<form id="uploadForm" enctype="multipart/form-data" method="post">
-		<input type="file" name="userFile" />
-		<input type="submit" value="Upload File" name="submit">
-	</form>
+<form id="uploadForm" onsubmit="return validateForm()" enctype="multipart/form-data" method="post">
+	<input type="file" onchange="previewFile()" name="userFile" /><br>
+	Description:<input type="text" name="descrip"><br>
+	<img src="picsub" height="200" alt="Image preview...">
+	<input type="submit" onclick="myFunction()" value="Upload File" name="submit"><br>
+</form>
 <script>
 function myFunction() {
-    document.getElementById("submitpage").submit();
+    document.getElementById("uploadForm").submit();
+    getLocation();
 }
 function previewFile() {
   var preview = document.querySelector('img');
@@ -26,10 +29,40 @@ function previewFile() {
   }
 }
 function validateForm() {
-    var x = document.forms["submitpage"]["descrip"].value;
+    var x = document.forms["uploadForm"]["descrip"].value;
     if (x == "") {
         alert("Description must be filled out");
         return false;
+    }
+}
+var y = document.getElementById("uploadForm");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(info, showError);
+    } else { 
+        y.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function info(position){
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var time = position.timestamp;
+    y.innerHTML= "Location was saved.";
+}
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            y.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            y.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            y.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            y.innerHTML = "An unknown error occurred."
+            break;
     }
 }
 </script>
