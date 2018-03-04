@@ -1,0 +1,37 @@
+!DOCTYPE html>
+<html>
+<body>
+
+<p>Insert picture and description of incident.</p>
+
+<form id="uploadForm" enctype="multipart/form-data" method="post">
+		<input type="file" name="userFile" />
+		<input type="submit" value="Upload File" name="submit">
+	</form>
+<script>
+function myFunction() {
+    document.getElementById("submitpage").submit();
+}
+function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  }
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+function validateForm() {
+    var x = document.forms["submitpage"]["descrip"].value;
+    if (x == "") {
+        alert("Description must be filled out");
+        return false;
+    }
+}
+</script>
+</body>
+</html>
