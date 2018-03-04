@@ -29,7 +29,6 @@ function previewFile() {
     preview.src = "";
   }
 }
-  var y = document.getElementById("submitpage");
 function validateForm() {
     var x = document.forms["submitpage"]["descrip"].value;
     if (x == "") {
@@ -37,6 +36,7 @@ function validateForm() {
         return false;
     }
 }
+<!--var y = document.getElementById("submitpage");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(info, showError);
@@ -65,7 +65,7 @@ function showError(error) {
             y.innerHTML = "An unknown error occurred."
             break;
     }
-}
+}-->
 </script>
 </body>
 </html>
