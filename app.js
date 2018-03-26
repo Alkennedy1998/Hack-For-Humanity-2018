@@ -57,7 +57,7 @@ router.get('/',function(req,res){
   res.json({ message: 'hooray! welcome to our api!' });
 });
 
-app.use('/api', router);
+app.use('/frontend', router);
 
 //POSTs a report into reports
 router.post('/submission', function(req, res) {
