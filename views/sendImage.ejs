@@ -1,0 +1,50 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<p>Insert picture and description of incident.</p>
+
+<form method="POST" id="contact" name="13" class="form-horizontal wpc_contact" novalidate="novalidate" enctype="multipart/form-data">
+<script>
+    var form = $('form')[0]; // You need to use standard javascript object here
+    var formData = new FormData(form);
+
+    $.ajax({
+    url: 'http://localhost:8080/api/submission',
+    data: formData,
+    type: 'POST',
+    contentType: false,
+    processData: false,
+
+});
+    </script>
+<fieldset>
+    <div id="legend" class="">
+        <legend class="">file demoe 1</legend>
+        <div id="alert-message" class="alert hidden"></div>
+    </div>
+
+    <div class="control-group">
+        <!-- Text input-->
+        <label class="control-label" for="input01">Text input</label>
+        <div class="controls">
+            <input type="text" placeholder="placeholder" class="input-xlarge" name="name">
+            <p class="help-block" style="display:none;">text_input</p>
+        </div>
+        <div class="control-group">  </div>
+        <label class="control-label">File Button</label>
+
+        <!-- File Upload -->
+        <div class="controls">
+            <input class="input-file" id="fileInput" type="file" name="file">
+        </div>
+    </div>
+    <div class="control-group">
+
+        <!-- Button -->
+        <div class="controls">
+            <button class="btn btn-success">Button</button>
+        </div>
+    </div>
+</fieldset>
+</form> 

@@ -10,6 +10,7 @@
 <!-- <style type="text/css" media="all"> -->
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
 
 </style>
    
@@ -23,7 +24,11 @@
 	<div id="top">
 	
 		<div id="logo">
-		<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/> 
+			<p class="logo">
+			<a href="displaypage.html">
+			<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/>
+			</a>
+			</p> 
 		<h1> Disaster Mapper</h1>
 		</div>
 
@@ -50,17 +55,75 @@
 <div id="content-wrapper">
 		
 	<div id="content">
-	<h1> This is the HEADER of the submit page </h1>
+	<center><h1> Submit a Picture and a Description </h1></center>
 	
 		<div id="leftside">
-		<img src="images/filler.jpg" width="400" height="400px" alt="To do pic" />
-		<p> Picture caption </p>
-		<img src="images/filler.jpg" width="400" height="400px" alt="To do pic" />
-		<p> Picture caption </p>
+		<img src="images/flood.jpg" width="300" height="200px" alt="To do pic" />
+		
+		<img src="images/wildfire.jpeg" width="300" height="200px" alt="To do pic" />
+		<p> Two examples of suitable pictures </p>
 		</div>
 		
 		<div id="rightside">
-		<p> This is where the form stuff is supposed to be </p>
+		<!-- script start -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+
+    window.addEventListener('load', function() {
+
+
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      console.log('Your current position is:');
+      var LATI=`${crd.latitude}`;
+      var LONG=`${crd.longitude}`;
+      window.globalLati=LATI;
+      window.globalLong=LONG;
+      console.log(`More or less ${crd.accuracy} meters.`);
+    };
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+     })
+
+     function writeText (form) {
+       form.latitude.value = window.globalLati;
+         form.longitude.value = window.globalLong;
+
+     };
+
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB5-r7nA96ydTyiER6U0XzvOdRjX_Ht7c&callback=initMap">
+    </script>
+	<!-- end script -->
+		<form id="loginformA" action="submission" method="post">
+		<p> Check "Accept" before Submitting.</p>
+		<p> Description: </p>
+		<input type="text" name="description"/>
+		<input id="hidden" type="hidden" name="latitude">
+		<input id="hidden" type="text" name="latitude">
+		<input id="hidden" type="hidden" name="longitude">
+		<input id="hidden" type="text" name="longitude">
+		<p> Submit Picture: </p>
+		<input type="file" name="userFile" />
+		<br /><br />
+		<INPUT TYPE="button" NAME="button2" Value="Accept" onClick="writeText(this.form)">
+		<br /><br />
+		<input type="submit" name="submit">
+		</form>
+		
 		</div>
 	
     </div>

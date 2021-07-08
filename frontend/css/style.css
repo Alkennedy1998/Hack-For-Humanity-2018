@@ -1,37 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
-	font-family: Arial,Helvetica,sans-serif;
-	background-color: #80bcc4;
+	font-family: "Roboto", Arial,Helvetica,sans-serif;
+	/*background-image: url(../images/bg.jpg); */
+	background-color: #000010;
+	
 }
 
 /* Start of the Header */
 
 #wrapper {
 		width: 900px;
+		height: 225px;
 		margin: auto;
-		background-color: #e188f2;
+		/*background-color: #90aeec; */
+		background-image: url(../images/earth1.png);
+		background-repeat:no-repeat;
+		background-size:1000px 306px; /* width height */
 		padding: 0 40px;
 }
 
 #logo{
 	float:left;
-	margin: 50px 0;
+	font-family: Garamond;
 }
 
+#logo p{
+	float:left;
+	font-family: Garamond;
+}
+
+
 #logo h1{
-	color: #bc1142;
+	color: #ffffff;
 	float:right;
-	padding-left: 75px;
-	padding-top: 20px;
+	padding-left: 10px;
+	padding-top: 35px;
+	font-size: 30px;
 }
 
 #topnav{
 	clear:both;	
+	margin-left: 15px;
 }
 
+#nav a{
+	color: #ffffff;
+}
 #topnav ul{
 	padding: 15px 0;
 	margin: 0;
-	border-top: 1px #000 dotted;
+
 }
 
 #topnav ul li{
@@ -44,58 +63,57 @@ body {
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+	font-size: 18px;
+	font-family: Garamond;
 }
 
 #topnav a:visited{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+
+	font-size: 18px;
 }
 
 #topnav a:active{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color: #000;
-	font-size: 14px;
+
+	font-size: 18px;
 }
 
 #topnav a:hover{
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	color:#bc1142;
-	font-size: 14px;
+	color:#edd79b;
+	font-size: 18px;
 }
 
 /* Start of the Body Content */
 #content-wrapper{
 	margin: auto;
 	width: 900px;
-    white-space: nowrap;
+    /*white-space: nowrap; */
     overflow: hidden;
 	padding-right: 80px;
 }
 #content{
 	float: left;
 	width: 1000px;
-	background-color: #66FFb3;
+	/*background-color: #a6bef0; */
+	background-color: #ffffff; 
 }
 
 #content h1{
-	color: #ffffff;
+	color: #000000;
 }
 
 #leftside{
 	float: left;
 	width: 500px;
-	background-color: #FF66B3;
-
-
+	/*background-color: #a6bef0;*/
 }
 
 #leftside img{
@@ -110,10 +128,26 @@ body {
 #rightside{
 	float: right;
 	width: 500px;
-	background-color: #008e09;
-	
+	/*background-color: #a6bef0; */
+}
+
+#rightside form{
+	border-style: solid;
+	width: 250px;
+	margin-top: 30px;
+	/*background-color: #a6bef0; */
+}
+
+#rightside form{
+	padding: 50px;
 }
 
 #rightside img{
 	padding-top: 25px;
+}
+
+#hidden{
+	color: white;
+	border:0px solid #58B9FA; 
+
 }

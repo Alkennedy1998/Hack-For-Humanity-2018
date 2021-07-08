@@ -1,20 +1,33 @@
-const express = require('express');
+
+const express = require("express")
+
+const bodyParser = require('body-parser');
+const app = express()
+const request = require('request');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var multer = require('multer');
 var upload = multer({ dest: './uploads' });
-const app = express();
 const path = require('path');
 var Schema = mongoose.Schema;
 const fs = require('fs');
 var router = express.Router();
-const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 27017;
 
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs')
+
+
+app.get('/api/file', function(req, res) {
+	res.render('./FinalTest')
+})
+
+
 app.use(bodyParser({uploadDir:'/data'}));
 
 var url = "mongodb://127.0.0.1/mydb";
@@ -44,7 +57,7 @@ router.get('/',function(req,res){
   res.json({ message: 'hooray! welcome to our api!' });
 });
 
-app.use('/api', router);
+app.use('/frontend', router);
 
 //POSTs a report into reports
 router.post('/submission', function(req, res) {
@@ -74,7 +87,6 @@ router.get('/submission', function(req, res) {
     res.json(reports);
   });
 });
-
 
 app.listen(PORT, function () {
   console.log('App listening on port: ' + PORT);

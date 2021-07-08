@@ -11,9 +11,11 @@
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="css/displaypage.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' /> <!-- Font link -->
+	<link href="images/favicon.png" rel="shortcut icon"  type="image/x-icon">
 
 </style>
-   
+
 </head>
 
 <body>
@@ -22,9 +24,13 @@
 <div id="wrapper">
 
 	<div id="top">
-	
+
 		<div id="logo">
-		<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/> 
+			<p class="logo">
+			<a href="displaypage.html">
+			<img class="logo" src="images/logo1.png" alt="Loco Logo" width="100px" height="100px"/>
+			</a>
+			</p>
 		<h1> Disaster Mapper</h1>
 		</div>
 
@@ -44,22 +50,21 @@
 
 	</ul>
 	</div>
-	
+
 	</div>
 </div> <!-- end of wrapper div-->
-	
 <div id="content-wrapper">
-		
+
 	<div id="content">
 	<center><h1> The Disaster Map </h1></center>
-	
+
 		<div id="mapleftside">
-		
+
 		<!--Map Code Starts -->
 		<div id="map"></div>
 		<script>
         function initMap() {
-                
+
             var broadway = {
                 info: '<strong>Chipotle on Broadway</strong><br>\
                         5224 N Broadway St<br> Chicago, IL 60640<br>\
@@ -67,7 +72,7 @@
                 lat: 41.976816,
                 long: -87.659916
             };
-                
+
             var belmont = {
                 info: '<strong>Chipotle on Belmont</strong><br>\
                         1025 W Belmont Ave<br> Chicago, IL 60657<br>\
@@ -75,7 +80,7 @@
                 lat: 41.939670,
                 long: -87.655167
             };
-                
+
             var sheridan = {
                 info: '<strong>Chipotle on Sheridan</strong><br>\r\
                         6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
@@ -83,29 +88,29 @@
                 lat: 42.002707,
                 long: -87.661236
             };
-                
+
             var locations = [
                     [broadway.info, broadway.lat, broadway.long, 0],
                     [belmont.info, belmont.lat, belmont.long, 1],
                     [sheridan.info, sheridan.lat, sheridan.long, 2],
             ];
-                                 
+
             var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 13,
                     center: new google.maps.LatLng(41.976816, -87.659916),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-                                                               
+
             var infowindow = new google.maps.InfoWindow({});
-                                                               
+
             var marker, i;
-                                                               
+
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map
             });
-                                                                                                   
+
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
@@ -115,25 +120,83 @@
             }
         }
 		</script>
-		
+<script>
+    
+ function addpin(latta,long){  
+    
+   var myLatlng = new google.maps.LatLng(latta,long);
+var mapOptions = {
+  zoom: 4,
+  center: myLatlng
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+var marker = new google.maps.Marker({
+    position: myLatlng,
+    title:"Hello World!"
+});
+
+// To add the marker to the map, call setMap();
+marker.setMap(map);
+ }
+</script>
 		<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8WajLBE-53XI-UvSqL9WhRKQ9LrddNtQ
 		&callback=initMap">
 		</script>
 		</div>
-		
+
 		<!-- Map Code Ends -->
 		<div id="maprightside">
-			
+			<br/>
 			<div id="info">
-			<p> This is a placeholder </p>
+        <p>Insert picture and description of incident.</p>
+
+        <form id="submitpage" action="/submitsuccess" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+          Description: <input type="text" name="descrip"><br>
+          <input type="file" onchange="previewFile()"><br>
+          <img src="picsub" height="200" alt="Image preview...">
+
+
+            <INPUT TYPE="text" NAME="latitude" Value="75">
+              <INPUT TYPE="text" NAME="longitude" Value="125">
+                  <INPUT TYPE="button" NAME="button2" Value="Write" onClick="addpin(this.form.latitude.value, this.form.longitude.value)">
+
+
+
+        </form>
+        <script>
+        function myFunction() {
+            document.getElementById("submitpage").submit();
+        }
+        function previewFile() {
+          var preview = document.querySelector('img');
+          var file    = document.querySelector('input[type=file]').files[0];
+          var reader  = new FileReader();
+          reader.onloadend = function () {
+            preview.src = reader.result;
+          }
+          if (file) {
+            reader.readAsDataURL(file);
+          } else {
+            preview.src = "";
+          }
+        }
+        function validateForm() {
+            var x = document.forms["submitpage"]["descrip"].value;
+            if (x == "") {
+                alert("Description must be filled out");
+                return false;
+            }
+        }
+        </script>
 			</div>
-			
+
 			<div id="submissionButton">
-				<center><a href="submitpage.html">Submit Your Own Image.</a></center>
+				<center><a href="submitpage.html">Submit Your Own Image</a></center>
 			</div>
 		</div>
-	
+
     </div>
 </div> <!--  end of content-wrapper div -->
 </body>
